@@ -90,6 +90,60 @@
   max-height:238px;
 }
 
+.project-group-label{
+  grid-column:1 / -1;
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  align-items:center;
+  margin:38px 2px 2px;
+  padding:15px 2px 12px;
+  border-bottom:1px solid var(--line);
+  color:var(--muted);
+  font-family:var(--mono);
+  font-size:.69rem;
+  letter-spacing:.075em;
+  text-transform:uppercase;
+}
+
+.project-group-label span:last-child{
+  font-size:.61rem;
+  opacity:.76;
+}
+
+.project-added{
+  min-height:360px;
+}
+
+.project-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  margin:-6px 0 16px;
+}
+
+.project-links .project-link{
+  margin:0;
+}
+
+.work-system-map{
+  max-width:780px;
+  margin-top:22px;
+  background:color-mix(in srgb,var(--panel) 56%,transparent);
+}
+
+.work-system-map .project-system-canvas svg{
+  max-height:190px;
+}
+
+.work-system-map .project-system-head{
+  font-size:.6rem;
+}
+
+.timeline-row > div:last-child{
+  min-width:0;
+}
+
 @keyframes project-node-pulse{
   0%,100%{filter:drop-shadow(0 0 0 color-mix(in srgb,var(--accent) 0%,transparent))}
   50%{filter:drop-shadow(0 0 6px color-mix(in srgb,var(--accent) 58%,transparent))}
@@ -99,9 +153,16 @@
   background:color-mix(in srgb,var(--panel) 78%,transparent);
 }
 
+[data-theme="dark"] .work-system-map{
+  background:color-mix(in srgb,var(--panel) 62%,transparent);
+}
+
 @media (prefers-color-scheme:dark){
   :root:not([data-theme]) .project-system-map{
     background:color-mix(in srgb,var(--panel) 78%,transparent);
+  }
+  :root:not([data-theme]) .work-system-map{
+    background:color-mix(in srgb,var(--panel) 62%,transparent);
   }
 }
 
@@ -114,4 +175,10 @@
   .project-system-head,.project-system-foot{font-size:.57rem;letter-spacing:.055em}
   .project-flow-node text{font-size:9px}
   .project-system-canvas svg{max-height:205px}
+  .project-group-label{display:block;margin-top:28px;font-size:.62rem}
+  .project-group-label span{display:block}
+  .project-group-label span:last-child{margin-top:5px}
+  .project-added{min-height:0}
+  .work-system-map{margin-top:16px}
+  .work-system-map .project-system-canvas svg{max-height:180px}
 }
