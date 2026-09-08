@@ -1,7 +1,18 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
 const root = document.documentElement;
-const themeToggle = document.getElementById('theme-toggle');
+const headerLinks = document.querySelector('.header-links');
+let themeToggle = document.getElementById('theme-toggle');
+
+if (!themeToggle && headerLinks) {
+  themeToggle = document.createElement('button');
+  themeToggle.id = 'theme-toggle';
+  themeToggle.className = 'theme-toggle';
+  themeToggle.type = 'button';
+  themeToggle.innerHTML = '<span class="theme-symbol" aria-hidden="true"></span><span class="theme-text"></span>';
+  headerLinks.prepend(themeToggle);
+}
+
 const themeSymbol = themeToggle?.querySelector('.theme-symbol');
 const themeText = themeToggle?.querySelector('.theme-text');
 const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
