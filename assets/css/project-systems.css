@@ -1,0 +1,117 @@
+.project-system-map{
+  margin:4px 0 2px;
+  padding:14px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:color-mix(in srgb,var(--panel) 74%,transparent);
+  overflow:hidden;
+}
+
+.project-system-head,
+.project-system-foot{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  font-family:var(--mono);
+  font-size:.62rem;
+  letter-spacing:.075em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.project-system-state{
+  color:var(--accent);
+  white-space:nowrap;
+}
+
+.project-system-state i{
+  display:inline-block;
+  width:6px;
+  height:6px;
+  margin-right:7px;
+  border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 10%,transparent);
+}
+
+.project-system-canvas{
+  padding:7px 0 2px;
+}
+
+.project-system-canvas svg{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:220px;
+  overflow:visible;
+}
+
+.project-flow-line{
+  fill:none;
+  stroke:var(--accent);
+  stroke-width:1.25;
+  stroke-opacity:.34;
+  vector-effect:non-scaling-stroke;
+}
+
+.project-flow-node circle{
+  fill:var(--accent);
+}
+
+.project-flow-node text{
+  fill:var(--muted);
+  font-family:var(--mono);
+  font-size:9.5px;
+  letter-spacing:.055em;
+  text-anchor:middle;
+}
+
+.project-flow-node.is-terminal circle{
+  animation:project-node-pulse 3.8s infinite ease-in-out;
+}
+
+.project-system-foot{
+  padding-top:3px;
+  border-top:1px solid color-mix(in srgb,var(--line) 65%,transparent);
+}
+
+.project-system-foot span:first-child{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.project-featured .project-system-map{
+  margin-top:8px;
+}
+
+.project-featured .project-system-canvas svg{
+  max-height:238px;
+}
+
+@keyframes project-node-pulse{
+  0%,100%{filter:drop-shadow(0 0 0 color-mix(in srgb,var(--accent) 0%,transparent))}
+  50%{filter:drop-shadow(0 0 6px color-mix(in srgb,var(--accent) 58%,transparent))}
+}
+
+[data-theme="dark"] .project-system-map{
+  background:color-mix(in srgb,var(--panel) 78%,transparent);
+}
+
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme]) .project-system-map{
+    background:color-mix(in srgb,var(--panel) 78%,transparent);
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .project-flow-node.is-terminal circle{animation:none}
+}
+
+@media (max-width:700px){
+  .project-system-map{padding:12px;border-radius:14px}
+  .project-system-head,.project-system-foot{font-size:.57rem;letter-spacing:.055em}
+  .project-flow-node text{font-size:9px}
+  .project-system-canvas svg{max-height:205px}
+}
