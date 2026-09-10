@@ -2,6 +2,32 @@
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const animate = (markup) => reducedMotion ? '' : markup;
 
+  // Keep the public portfolio selective: remove this project from the rendered site.
+  const hiddenProject = [...document.querySelectorAll('.project-card')]
+    .find((card) => card.querySelector('h3')?.textContent.trim() === 'Wavelength');
+  hiddenProject?.remove();
+
+  // Close the numbering gap after removing a selected project.
+  const projectOrder = new Map([
+    ['Production Network & Pandemic', '05'],
+    ['QuantForex', '06'],
+    ['Quant Trading Learning Lab', '07'],
+    ['Global Trade Network Visualization', '08'],
+    ['QuantEcon Contributions', '09'],
+  ]);
+
+  document.querySelectorAll('.project-card').forEach((card) => {
+    const name = card.querySelector('h3')?.textContent.trim();
+    const number = projectOrder.get(name);
+    if (!number) return;
+
+    const topline = card.querySelector('.project-topline > span:first-child');
+    if (topline) topline.textContent = topline.textContent.replace(/^\d{2}/, number);
+
+    const mapIndex = card.querySelector('.project-system-foot > span:last-child');
+    if (mapIndex) mapIndex.textContent = number;
+  });
+
   const processVisuals = {
     observe: `
       <svg viewBox="0 0 260 110" aria-hidden="true">
